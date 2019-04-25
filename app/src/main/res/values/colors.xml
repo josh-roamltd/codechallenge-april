@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="cc_black">#040505</color>
+    <color name="cc_grey">#525456</color>
+    <color name="cc_dark_grey">#CACBCF</color>
+    <color name="cc_pale_purple">#8D7287</color>
+    <color name="cc_purple">#A72A59</color>
+    <color name="cc_maroon">#551F2B</color>
+    <color name="cc_red">#F8071B</color>
+    <color name="cc_dark_red">#A2041D</color>
+</resources>
