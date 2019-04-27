@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':kotlinkit'
+project(':kotlinkit').projectDir = new File('kotlin-toolkit/kotlinkit')

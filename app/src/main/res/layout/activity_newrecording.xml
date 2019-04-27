@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cc_pink">
+
+    <FrameLayout
+            android:id="@+id/newRecordingRecordBg"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_record_btn_bg"
+            android:elevation="4dp"
+            android:layout_centerInParent="true">
+
+        <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/newRecordingRecordIcon"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/icon_equaliser"
+                android:tint="@color/cc_pink"
+                android:scaleX="1"
+                android:scaleY="0.7"
+                android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+
+    <View
+            android:id="@+id/newRecordingBackBtnBg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:translationX="-60dp"
+            android:translationY="-60dp"
+            android:background="@drawable/bg_back_btn"
+            android:elevation="4dp"/>
+
+    <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/newRecordingBackBtn"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/icon_back"
+            android:tint="@color/white"
+            android:layout_margin="10dp"
+            android:translationZ="5dp"/>
+
+</RelativeLayout>

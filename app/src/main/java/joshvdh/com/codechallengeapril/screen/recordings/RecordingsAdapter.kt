@@ -18,6 +18,6 @@ class RecordingsAdapter(private val recordings: List<Recording>) : RecyclerView.
     override fun getItemCount() = recordings.size
 
     override fun onBindViewHolder(cell: RecordingsCell, position: Int) {
-        cell.hashCode()
+        cell.bindData(recordings[position])
     }
 }

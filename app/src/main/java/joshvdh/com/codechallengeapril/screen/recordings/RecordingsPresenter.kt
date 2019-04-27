@@ -1,15 +1,26 @@
 package joshvdh.com.codechallengeapril.screen.recordings
 
+import com.roamltd.kotlinkit.mvp.BaseView
+import com.roamltd.kotlinkit.mvp.Presenter
 import joshvdh.com.codechallengeapril.model.Recording
-import joshvdh.com.codechallengeapril.mvp.BaseView
-import joshvdh.com.codechallengeapril.mvp.Presenter
 
 interface RecordingsView : BaseView {
-
+    fun onBindData(recordings: List<Recording>)
+    fun showAddRecordingScreen()
 }
 
 class RecordingsPresenter(private val recordings: List<Recording>) : Presenter<RecordingsView>() {
-    fun onRecordingClicked(recording: Recording) {
 
+    override fun onBindView(view: RecordingsView) {
+        super.onBindView(view)
+        view.onBindData(recordings)
+    }
+
+    fun onRecordingClicked(recording: Recording) {
+        //
+    }
+
+    fun onAddClicked() {
+        view?.showAddRecordingScreen()
     }
 }

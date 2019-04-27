@@ -12,4 +12,13 @@
     <color name="cc_maroon">#551F2B</color>
     <color name="cc_red">#F8071B</color>
     <color name="cc_dark_red">#A2041D</color>
+
+    <color name="cc_background_grey">#303137</color>
+    <color name="cc_header_grey">#313238</color>
+    <color name="cc_cell_grey">#3b3f44</color>
+    <color name="cc_wave_blue">#296667</color>
+    <color name="cc_wave_purple">#5d3c67</color>
+    <color name="cc_wave_green">#4f654d</color>
+    <color name="cc_pink">#ed2569</color>
+    <color name="cc_pink_ripple">#19ed2569</color>
 </resources>

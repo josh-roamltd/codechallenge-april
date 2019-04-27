@@ -2,21 +2,50 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cc_grey">
 
     <RelativeLayout
+            android:id="@+id/recordingsToolbar"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="100dp"
+            android:fadingEdgeLength="6dp"
+            android:requiresFadingEdge="vertical"
+            android:background="@color/cc_grey">
 
         <android.support.v7.widget.AppCompatImageView
-                android:layout_width=""
-                android:layout_height=""/>
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/icon_equaliser"/>
+
 
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recordingsContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_below="@id/recordingsToolbar"/>
+
+    <View
+            android:id="@+id/recordingsAddBtnBg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:translationX="60dp"
+            android:translationY="60dp"
+            android:background="@drawable/bg_add_recording_btn"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+
+    <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/recordingsAddBtn"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/icon_equaliser"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
