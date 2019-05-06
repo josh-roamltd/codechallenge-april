@@ -14,22 +14,21 @@ import joshvdh.com.codechallengeapril.model.Recording
 
 class RecordingsCell(context: Context) : RoamViewHolder(context) {
 
-    val cardRoot = RelativeLayout(context)
-    val icon = AppCompatImageView(context)
-    val titleText = AppCompatTextView(context)
-    val moreIcon = AppCompatImageView(context)
+    private val cardRoot = RelativeLayout(context)
+    private val icon = AppCompatImageView(context)
+    private val titleText = AppCompatTextView(context)
+    private val moreIcon = AppCompatImageView(context)
 
     init {
         contentView.apply {
-            //TODO: Shadow?
-//            addView(View(context), )
-
             addView(cardRoot, Params.rel().fullWidth(200).marginX(4).marginTop(10)) {
                 background = RecordingCellDrawable(
                     ContextCompat.getColor(context, R.color.cc_cell_grey),
                     ContextCompat.getColor(context, waveColors.random()),
                     12f
-                )
+                ).apply {
+                    setWaveOffsetPercent(0.3f + (Math.random()*0.7).toFloat())
+                }
 
                 addView(icon, Params.rel().size(20f).margin(12f)){
                     setBackgroundResource(R.drawable.icon_cell_bell)
@@ -50,6 +49,13 @@ class RecordingsCell(context: Context) : RoamViewHolder(context) {
     }
 
     companion object {
-        val waveColors = arrayOf(R.color.cc_wave_blue, R.color.cc_wave_green, R.color.cc_wave_purple)
+        val waveColors = arrayOf(
+            R.color.cc_wave_blue,
+            R.color.cc_wave_blue_lt,
+            R.color.cc_wave_green,
+            R.color.cc_wave_green_lt,
+            R.color.cc_wave_purple,
+            R.color.cc_wave_purple_lt
+        )
     }
 }

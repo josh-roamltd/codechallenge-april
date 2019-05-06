@@ -17,8 +17,11 @@
     <color name="cc_header_grey">#313238</color>
     <color name="cc_cell_grey">#3b3f44</color>
     <color name="cc_wave_blue">#296667</color>
+    <color name="cc_wave_blue_lt">#399597</color>
     <color name="cc_wave_purple">#5d3c67</color>
-    <color name="cc_wave_green">#4f654d</color>
+    <color name="cc_wave_purple_lt">#8F61A7</color>
+    <color name="cc_wave_green">#4C7248</color>
+    <color name="cc_wave_green_lt">#77CF6F</color>
     <color name="cc_pink">#ed2569</color>
     <color name="cc_pink_ripple">#19ed2569</color>
 </resources>

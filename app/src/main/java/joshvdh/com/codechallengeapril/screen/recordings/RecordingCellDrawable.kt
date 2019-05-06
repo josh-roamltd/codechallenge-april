@@ -20,9 +20,12 @@ class RecordingCellDrawable(
     private val backgroundPath = Path()
     private val wavePath = Path()
     private var offset = 0f
+    private var lastTime = System.currentTimeMillis()
 
     private val rectf = RectF()
     override fun draw(canvas: Canvas) {
+        lastTime = System.currentTimeMillis()
+
         backgroundPath.reset()
         rectf.set(canvas.clipBounds)
         val radii = radiusDP.toPX().toFloat()
@@ -39,16 +42,17 @@ class RecordingCellDrawable(
         val halfHeight = height * 0.5f
         val qWidth = halfWidth * 0.5f
         val qHeight = halfHeight * 0.5f
-        var progress = Math.sin(getProgress(0.1f)*Math.PI*2f).toFloat()
+        var progress = Math.sin(getProgress(0.1f) * Math.PI * 2f).toFloat()
+        val xOffset = -halfWidth * getProgress(0.6f)
 
         for (i in 0 until 2) {
-            //TODO: make rolling waves moving on X axis
             wavePath.apply {
                 reset()
-                moveTo(0f, halfHeight)
-                quadTo(qWidth, halfHeight + (halfHeight * progress), halfWidth, halfHeight)
-                quadTo(halfWidth + qWidth, halfHeight + (halfHeight * (-progress)), width, halfHeight)
-                lineTo(width, height)
+                moveTo(xOffset, halfHeight)
+                quadTo(xOffset + qWidth, halfHeight + (halfHeight * progress), xOffset + halfWidth, halfHeight)
+                quadTo(xOffset + halfWidth + qWidth, halfHeight + (halfHeight * (-progress)), xOffset + width, halfHeight)
+                quadTo(xOffset + width + qWidth, halfHeight + (halfHeight * progress), xOffset + width + halfWidth, halfHeight)
+                lineTo(xOffset+ width + halfWidth, height)
                 lineTo(0f, height)
                 close()
             }
@@ -67,7 +71,8 @@ class RecordingCellDrawable(
         opacity = alpha
     }
 
-    private fun getProgress(speed: Float) = (((System.currentTimeMillis()%10000).toFloat() * 0.001f * speed) + offset) % 1.0f
+    private fun getProgress(speed: Float) =
+        (((System.currentTimeMillis() % 10000).toFloat() * 0.001f * speed) + offset) % 1.0f
 
     override fun getAlpha(): Int = opacity
 

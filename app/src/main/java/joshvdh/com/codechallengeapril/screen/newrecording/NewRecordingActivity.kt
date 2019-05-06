@@ -56,7 +56,7 @@ class NewRecordingActivity : CCActivity<NewRecordingView, NewRecordingPresenter>
             newRecordingBackBtn.animate().alpha(0f)
             newRecordingRecordBg.animate().alpha(0f)
             newRecordingRecordIcon.animate().alpha(0f)
-            waveformBackground.animate().scaleY(0f).setStartDelay(300).withEndAction {
+            waveformBackground.animate().scaleY(0f).setStartDelay(300).setDuration(500).withEndAction {
                 onBackPressed()
             }
         }
