@@ -1,5 +1,6 @@
 package joshvdh.com.codechallengeapril.screen.newrecording
 
+import android.content.Context
 import com.roamltd.kotlinkit.mvp.BaseView
 import com.roamltd.kotlinkit.mvp.Presenter
 import joshvdh.com.codechallengeapril.audiofft.AudioRecordThread
@@ -12,8 +13,12 @@ interface NewRecordingView: BaseView {
     fun onDataChanged(values: List<Double>, minVal: Double, maxVal: Double)
 }
 
-class NewRecordingPresenter : Presenter<NewRecordingView>() {
-    private val recordingThread = AudioRecordThread(callback = this::onFFTUpdated)
+class NewRecordingPresenter(context: Context) : Presenter<NewRecordingView>() {
+    private val recordingThread = AudioRecordThread(
+        context,
+        callback = this::onFFTUpdated,
+        fileName = "RECORDED"
+        )
 
     private fun onFFTUpdated(fftData: List<Double>) {
         processFFTData(fftData)

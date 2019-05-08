@@ -14,10 +14,16 @@ import joshvdh.com.codechallengeapril.model.Recording
 
 class RecordingsCell(context: Context) : RoamViewHolder(context) {
 
+    interface Callback {
+        fun onCellClicked()
+    }
+
     private val cardRoot = RelativeLayout(context)
     private val icon = AppCompatImageView(context)
     private val titleText = AppCompatTextView(context)
     private val moreIcon = AppCompatImageView(context)
+
+    private var callback: Callback? = null
 
     init {
         contentView.apply {
@@ -41,11 +47,14 @@ class RecordingsCell(context: Context) : RoamViewHolder(context) {
                     setTextColor(Color.WHITE)
                 }
             }
+        }.setOnClickListener {
+            callback?.onCellClicked()
         }
     }
 
-    fun bindData(recording: Recording) {
+    fun bindData(recording: Recording, callback: Callback) {
         titleText.text = recording.recordingName
+        this.callback = callback
     }
 
     companion object {

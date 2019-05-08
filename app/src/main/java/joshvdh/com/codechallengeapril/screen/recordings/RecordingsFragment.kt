@@ -6,15 +6,16 @@ import com.roamltd.kotlinkit.view.setOnClickListener
 import io.realm.Realm
 import io.realm.kotlin.where
 import joshvdh.com.codechallengeapril.R
+import joshvdh.com.codechallengeapril.audiofft.AudioPlayThread
 import joshvdh.com.codechallengeapril.model.Recording
 import joshvdh.com.codechallengeapril.screen.CCFragment
 import joshvdh.com.codechallengeapril.screen.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_recordings.*
 
-class RecordingsFragment : CCFragment<RecordingsView, RecordingsPresenter>(), RecordingsView {
+class RecordingsFragment : CCFragment<RecordingsView, RecordingsPresenter>(), RecordingsView, RecordingsCell.Callback {
     private val recordings = Realm.getDefaultInstance().where<Recording>().findAll()
-    override fun initPresenter() = RecordingsPresenter(recordings)
 
+    override fun initPresenter() = RecordingsPresenter(recordings)
     override fun onCreateView(savedInstanceState: Bundle?) {
         super.onCreateView(savedInstanceState)
 
@@ -24,12 +25,19 @@ class RecordingsFragment : CCFragment<RecordingsView, RecordingsPresenter>(), Re
 
         recordingsAddBtnBg.apply {
             isClickable = true
-            setOnClickListener (presenter::onAddClicked)
+            setOnClickListener(presenter::onAddClicked)
         }
     }
 
     override fun onBindData(recordings: List<Recording>) {
-        recordingsContent.adapter = RecordingsAdapter(recordings)
+        recordingsContent.adapter = RecordingsAdapter(recordings, this)
+    }
+
+    override fun onCellClicked() {
+        //Play!
+        activity?.let {
+            AudioPlayThread(it, "RECORDED").start()
+        }
     }
 
     override fun onResume() {

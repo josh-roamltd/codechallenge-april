@@ -12,7 +12,7 @@ class NewRecordingActivity : CCActivity<NewRecordingView, NewRecordingPresenter>
 
     private val waveformDrawable = WaveformBarDrawable(Color.WHITE, 8)
 
-    override fun initPresenter() = NewRecordingPresenter()
+    override fun initPresenter() = NewRecordingPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

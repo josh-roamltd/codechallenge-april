@@ -4,7 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import joshvdh.com.codechallengeapril.model.Recording
 
-class RecordingsAdapter(private val recordings: List<Recording>) : RecyclerView.Adapter<RecordingsCell>() {
+class RecordingsAdapter(
+    private val recordings: List<Recording>,
+    private val callback: RecordingsCell.Callback
+) : RecyclerView.Adapter<RecordingsCell>() {
 
     init {
         setHasStableIds(true)
@@ -18,6 +21,6 @@ class RecordingsAdapter(private val recordings: List<Recording>) : RecyclerView.
     override fun getItemCount() = recordings.size
 
     override fun onBindViewHolder(cell: RecordingsCell, position: Int) {
-        cell.bindData(recordings[position])
+        cell.bindData(recordings[position], callback)
     }
 }
