@@ -17,7 +17,7 @@ class RecordingsPresenter(private val recordings: List<Recording>) : Presenter<R
     }
 
     fun onRecordingClicked(recording: Recording) {
-        //
+        //Stub
     }
 
     fun onAddClicked() {

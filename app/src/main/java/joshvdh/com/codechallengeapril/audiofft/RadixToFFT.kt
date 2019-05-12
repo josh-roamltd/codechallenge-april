@@ -77,28 +77,6 @@ public class Radix2FFT {
             }
         )
     }
-//    public void run(ShortValues input, DoubleValues output)
-//    {
-//        if (input.size() != n) throw new UnsupportedOperationException ();
-//
-//        // init input values
-//        final short [] itemsArray = input . getItemsArray ();
-//        for (int i = 0; i < n; i++) {
-//            final Complex complex = x[i];
-//            complex.re = itemsArray[i];
-//            complex.im = 0;
-//        }
-//
-//        // perform fft
-//        rad2FFT(x, dft);
-//
-//        // set output
-//        output.setSize(fftSize);
-//        final double [] outputItems = output . getItemsArray ();
-//        for (int i = 0; i < fftSize; i++) {
-//            outputItems[i] = calculateOutputValue(dft[i]);
-//        }
-//    }
 
     private fun calculateOutputValue(complex: Complex): Double {
         val magnitude = Math.sqrt(complex.re * complex.re + complex.im * complex.im)
@@ -106,14 +84,6 @@ public class Radix2FFT {
         // convert to magnitude to dB
         return 20 * Math.log10(magnitude / n)
     }
-
-//    private double calculateOutputValue(Complex complex)
-//    {
-//        final double magnitude = Math.sqrt(complex.re * complex.re + complex.im * complex.im);
-//
-//        // convert to magnitude to dB
-//        return 20 * Math.log10(magnitude / n);
-//    }
 
     private fun rad2FFT(x: Array<Complex>, DFT: Array<Complex>) {
         var BSep: Int                  // BSep is memory spacing between butterflies

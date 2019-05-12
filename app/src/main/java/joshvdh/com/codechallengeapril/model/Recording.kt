@@ -6,8 +6,7 @@ import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 
 open class Recording : RealmObject() {
-    var recordingId = ""
-        private set
+    private var recordingId = ""
     var recordingName = ""
         private set
 

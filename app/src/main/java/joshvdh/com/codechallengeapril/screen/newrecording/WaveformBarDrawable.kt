@@ -77,7 +77,6 @@ class WaveformBarDrawable(@ColorInt barColor: Int, private val barsPerQuadrant: 
 
             tempRect.set(Math.min(startX, endX), top, Math.max(startX, endX), bottom)
 
-            //TODO Draw
             canvas.drawRect(tempRect, barPaint)
         }
     }

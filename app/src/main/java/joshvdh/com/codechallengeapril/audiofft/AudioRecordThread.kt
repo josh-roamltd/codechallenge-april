@@ -21,30 +21,11 @@ class AudioRecordThread(
         AudioFormat.ENCODING_PCM_16BIT,
         bufferSize * 2
     )
-//    private val audioTrack = AudioTrack(
-//        AudioAttributes.Builder()
-//            .setUsage(AudioAttributes.USAGE_MEDIA)
-//            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//            .build(),
-//        AudioFormat.Builder()
-//            .setChannelMask(AudioFormat.CHANNEL_OUT_MONO)
-//            .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-//            .setSampleRate(sampleRate)
-//            .build(),
-//        bufferSize * 2,
-//        AudioTrack.MODE_STREAM,
-//        AudioManager.AUDIO_SESSION_ID_GENERATE
-//    )
 
     private val audioData = AudioData(bufferSize)
     private var time = 0L
-    private val audioStreamBufferSize = 500000
 
     private val fft = Radix2FFT(bufferSize)
-    private val hzPerDataPoint = sampleRate.toDouble() / bufferSize
-    private val fftSize = (maxFrequency / hzPerDataPoint).toInt()
-
-//    val fftVM = FFTViewModel(context, fftSize, hzPerDataPoint)
 
     private val fftData = mutableListOf<Double>()
     private var running = false
@@ -74,8 +55,6 @@ class AudioRecordThread(
     private fun processAudioStream() {
         audioRecord.read(audioData.yData, 0, bufferSize)
 
-        writeData(audioData)
-
         //Write to file
         val itemsArray = audioData.xData
         for (index in 0 until bufferSize)
@@ -83,10 +62,6 @@ class AudioRecordThread(
 
         fft.run(audioData.yData, fftData)
         callback(fftData)
-    }
-
-    private fun writeData(audioData: AudioData) {
-//        audioTrack.write(audioData.yData, audioData.yData.size, AudioTrack.WRITE_BLOCKING)
     }
 
     fun onStop() {
